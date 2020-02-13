@@ -3,7 +3,7 @@ Utilisation d'un tensiomètre Microlife BP A200 sous MacOs
 
 <sub>*Version du 13 février 2020*</sup>
 
-Ce programme sert à utiliser un tensiomètre Microlife BP A200 sous MacOs.
+Ce programme permet l'utilisation d'un tensiomètre Microlife BP A200 sous MacOs.
 
 Ce matériel est commercialisé avec un logiciel fonctionnant uniquement sous Windows.
 Un projet permettant son utilisation sous Linux existe. Il a été réalisé par Hervé Quillévéré, et porte le nom de "bpddl". Ce projet est visible sur cette [page](http://www.rvq.fr/linux/bpddl.php)
