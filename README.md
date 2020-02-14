@@ -9,7 +9,7 @@ Ce matériel est commercialisé avec un logiciel fonctionnant uniquement sous Wi
 Un projet permettant son utilisation sous Linux existe. Il a été réalisé par Hervé Quillévéré, et porte le nom de **bpddl**. Ce projet est visible sur cette [page](http://www.rvq.fr/linux/bpddl.php)
 
 Sous Linux le matériel est détecté comme périphérique USB ayant comme vendor id et product id: 0x04b4 et 0x5500. Le module **cypress_m8** est automatiquement chargé, et un port /dev/ttyUSBx est créé.  
-Cypress semiconductor est le fabriquant du composant permettant la communication avec l'extérieur.  
+Cypress semiconductor est le fabriquant du composant permettant la communication avec l'appareil.  
 Le module cypress_m8 est un driver qui permet la communication usb-série.  
 Malheureusement, il n'y a pas d'équivalent sous MacOs. Le tensiomètre est bien reconnu comme dispositif USB avec les bons vendor id et product id, mais on ne va pas plus loin. Aucun port n'est créé dans /dev, contrairement à ce qui se passe avec  les autres dispositifs usb-série (ftdi par exemple)    
 
