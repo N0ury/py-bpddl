@@ -39,12 +39,12 @@ Pour ma part, utilisant Homebrew, ce paquet est récupéré par `brew install hi
 ```
 microlife.py [-r] [-d] [-t] [-n] [-g] [-s id] [-h]  
 -r   : read mode. Permet d'afficher tout les mesures du tensiomètre.  
--d   : delete mode. Efface toutes les mesures, mais pas l'ID.  
+-d   : delete mode. Efface toutes les mesures, et également l'ID.  
 -t   : set time. Mise à jour de la date et heure à partir de celle du Mac.  
 -n   : serial number. Lit le numéro de série (un doute existe sur le résultat).  
 -g   : get id. Lecture de l'ID enregistré sur le tensiomètre.  
 -s id: set id. Enregistre une nouvelle valeur de l'ID sur le tensiomètre.  
-               Les mesures ne sont pas effacées.  
+               Les mesures ne sont pas affectées.  
 -h   : help. Affiche cette aide.
 ```
 
