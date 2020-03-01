@@ -42,12 +42,12 @@ usage="""
 usage:
 %s [-r] [-d] [-t] [-n] [-g] [-s id] [-h]
 -r   : read mode. Permet d'afficher tout les mesures du tensiomètre.
--d   : delete mode. Efface toutes les mesures, mais pas l'ID.
+-d   : delete mode. Efface toutes les mesures, et également l'ID.
 -t   : set time. Mise à jour de la date et heure à partir de celle du Mac.
 -n   : serial number. Lit le numéro de série (un doute existe sur le résultat).
 -g   : get id. Lecture de l'ID enregistré sur le tensiomètre.
 -s id: set id. Enregistre une nouvelle valeur de l'ID sur le tensiomètre.
-               Les mesures ne sont pas effacées.
+               Les mesures ne sont pas affectées.
 -h   : help. Affiche cette aide.
 """ % sys.argv[0]
 
@@ -200,16 +200,23 @@ def read_records(dev):
   if nb_mesures == 0:
     print (u'Aucun résultat')
     sys.exit()
-  print ('date pulse dia syst map mam')
+  print ('date pulse dia syst map mam pad')
   for i in range(nb_mesures):
     date = display_date(str(reponse[i*32+32:i*32+42], 'utf-8'))
-    mam = str(reponse[i*32+42:i*32+44], 'utf-8')
-    mam = '0' if mam == '20' else 'N'
+    mam_pad = reponse[i*32+42:i*32+43]
+    if mam_pad == bytearray(b'0'):
+       mam = 'N'; pad = 'N'
+    elif mam_pad == bytearray(b'2'):
+       mam = 'O'; pad = 'N'
+    elif mam_pad == bytearray(b'\x00'):
+       mam = 'N'; pad = 'O'
+    elif mam_pad == bytearray(b'\x02'):
+       mam = 'O'; pad = 'O'
     pulse = int(str(reponse[i*32+48:i*32+51], 'utf-8'), 16)
     dia = int(int(str(reponse[i*32+51:i*32+54], 'utf-8'), 16) / 4)
     syst = int(str(reponse[i*32+54:i*32+56], 'utf-8'), 16)
     map = int(dia + (syst - dia) / 3)
-    print ('{} {} {} {} {} {}'.format(date, pulse, dia, syst, map, mam))
+    print ('{} {} {} {} {} {} {}'.format(date, pulse, dia, syst, map, mam, pad))
 
 en = Enumeration()
 devices = en.find(vid=0x04b4, pid=0x5500)
