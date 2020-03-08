@@ -216,7 +216,7 @@ def read_records(dev):
     dia = int(int(str(reponse[i*32+51:i*32+54], 'utf-8'), 16) / 4)
     syst = int(str(reponse[i*32+54:i*32+56], 'utf-8'), 16)
     map = int(dia + (syst - dia) / 3)
-    print ('{} {} {} {} {} {} {}'.format(date, pulse, dia, syst, map, mam, pad))
+    print ('{} {} {} {} {} {} {} ""'.format(date, pulse, dia, syst, map, mam, pad))
 
 en = Enumeration()
 devices = en.find(vid=0x04b4, pid=0x5500)
